@@ -1,0 +1,112 @@
+[gd_scene load_steps=4 format=3 uid="uid://1uo7yeuhj8t0"]
+
+[ext_resource type="Texture2D" uid="uid://d7n2g65wdh5d" path="res://addons/Tiny Swords/Factions/Knights/Troops/Warrior/Purple/Warrior_Purple.png" id="1_ihrfy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uowve"]
+line_spacing = 10.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_exsqh"]
+radius = 8.92778
+
+[node name="Node2D" type="Node2D"]
+
+[node name="WarriorPurple" type="Sprite2D" parent="."]
+position = Vector2(2633, 35)
+texture = ExtResource("1_ihrfy")
+
+[node name="Label" type="Label" parent="WarriorPurple"]
+offset_left = 646.0
+offset_top = -702.0
+offset_right = 686.0
+offset_bottom = -679.0
+scale = Vector2(3.11283, 3.0918)
+text = "idle"
+
+[node name="Label9" type="Label" parent="WarriorPurple"]
+offset_left = -502.0
+offset_top = -890.0
+offset_right = -426.0
+offset_bottom = -867.0
+scale = Vector2(4.71686, 5.59429)
+text = "0       1        2        3       4        5"
+
+[node name="Label10" type="Label" parent="WarriorPurple"]
+offset_left = -627.0
+offset_top = -723.0
+offset_right = -608.0
+offset_bottom = -454.0
+scale = Vector2(4.71686, 5.59429)
+text = "0 1 2 3 4 5 6 7"
+label_settings = SubResource("LabelSettings_uowve")
+autowrap_mode = 2
+
+[node name="Label8" type="Label" parent="WarriorPurple"]
+offset_left = 635.0
+offset_top = -506.0
+offset_right = 675.0
+offset_bottom = -483.0
+scale = Vector2(3.11283, 3.0918)
+text = "run"
+
+[node name="Label2" type="Label" parent="WarriorPurple"]
+offset_left = 634.0
+offset_top = -322.0
+offset_right = 737.0
+offset_bottom = -299.0
+scale = Vector2(3.11283, 3.0918)
+text = "attack_side_1"
+
+[node name="Label3" type="Label" parent="WarriorPurple"]
+offset_left = 641.0
+offset_top = -160.0
+offset_right = 744.0
+offset_bottom = -137.0
+scale = Vector2(3.11283, 3.0918)
+text = "attack_side_2"
+
+[node name="Label4" type="Label" parent="WarriorPurple"]
+offset_left = 596.0
+offset_top = 56.0
+offset_right = 711.0
+offset_bottom = 79.0
+scale = Vector2(3.11283, 3.0918)
+text = "attack_down_1"
+
+[node name="Label5" type="Label" parent="WarriorPurple"]
+offset_left = 599.0
+offset_top = 234.0
+offset_right = 714.0
+offset_bottom = 257.0
+scale = Vector2(3.11283, 3.0918)
+text = "attack_down_2"
+
+[node name="Label6" type="Label" parent="WarriorPurple"]
+offset_left = 648.0
+offset_top = 434.0
+offset_right = 740.0
+offset_bottom = 457.0
+scale = Vector2(3.11283, 3.0918)
+text = "attack_up_1"
+
+[node name="Label7" type="Label" parent="WarriorPurple"]
+offset_left = 640.0
+offset_top = 619.0
+offset_right = 732.0
+offset_bottom = 642.0
+scale = Vector2(3.11283, 3.0918)
+text = "attack_up_2"
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(37, -12)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(0, -28)
+texture = ExtResource("1_ihrfy")
+hframes = 6
+vframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-5.96046e-08, -25)
+scale = Vector2(2.00222, 2.23266)
+shape = SubResource("CapsuleShape2D_exsqh")
+debug_color = Color(0, 0.6, 0.701961, 0.203922)

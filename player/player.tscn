@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b78se0ny42bum"]
+
+[ext_resource type="Texture2D" uid="uid://d7n2g65wdh5d" path="res://addons/Tiny Swords/Factions/Knights/Troops/Warrior/Purple/Warrior_Purple.png" id="1_bvkfx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_exsqh"]
+radius = 8.92778
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -28)
+texture = ExtResource("1_bvkfx")
+hframes = 6
+vframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5.96046e-08, -25)
+scale = Vector2(2.00222, 2.23266)
+shape = SubResource("CapsuleShape2D_exsqh")
+debug_color = Color(0, 0.6, 0.701961, 0.203922)
