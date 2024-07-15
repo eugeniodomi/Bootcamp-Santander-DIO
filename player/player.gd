@@ -7,7 +7,7 @@ var is_running: bool = false #checkbox do space, se era sim vira nao, se nao vir
 
 #troca animacao do player
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept"): 
+	if Input.is_action_just_pressed("move_up"): 
 		if is_running:
 			animation_player.play("idle")
 			is_running = false
