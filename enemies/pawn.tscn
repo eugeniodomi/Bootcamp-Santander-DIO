@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://csd302cyr1w2j"]
+
+[ext_resource type="Texture2D" uid="uid://ddyuye1ltf08p" path="res://addons/Tiny Swords/Factions/Knights/Troops/Pawn/Red/Pawn_Red.png" id="1_1rkfh"]
+[ext_resource type="Script" path="res://enemies/behaviors (comportamentos)/follow_player.gd" id="1_6hpl5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwqud"]
+atlas = ExtResource("1_1rkfh")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykajp"]
+atlas = ExtResource("1_1rkfh")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c3ix"]
+atlas = ExtResource("1_1rkfh")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bl26"]
+atlas = ExtResource("1_1rkfh")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0vt7"]
+atlas = ExtResource("1_1rkfh")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aeg4c"]
+atlas = ExtResource("1_1rkfh")
+region = Rect2(960, 192, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xtlav"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwqud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykajp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c3ix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bl26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0vt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aeg4c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_875jn"]
+radius = 28.0
+height = 58.0
+
+[node name="Pawn" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_6hpl5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
+sprite_frames = SubResource("SpriteFrames_xtlav")
+autoplay = "default"
+frame_progress = 0.0359043
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_875jn")
