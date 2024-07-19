@@ -13,6 +13,9 @@ var attack_cooldown: float = 0.0 #temporizador de reinicio de ataque
 
 
 func _process(delta: float) -> void:
+	#leitura de onde esta o player
+	GameManager.player_position = position
+	
 	# Ler input
 	read_input()
 	
