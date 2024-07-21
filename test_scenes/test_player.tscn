@@ -100,7 +100,7 @@ text = "attack_up_2"
 position = Vector2(442, 193)
 
 [node name="Pawn" parent="." instance=ExtResource("3_aefwp")]
-position = Vector2(420, 353)
+position = Vector2(135, 388)
 
 [node name="Pawn2" parent="." instance=ExtResource("3_aefwp")]
 position = Vector2(861, 17)
