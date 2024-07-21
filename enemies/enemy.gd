@@ -6,7 +6,7 @@ extends Node2D
 
 func damage(amount: int) -> void:
 	health -= amount
-	print('Inimigo recebeu dano de ', amount, '. A vida total é de ', health) 
+	print("Inimigo recebeu dano de ", amount, ". A vida total é de ", health) 
 	#verificar se der espadada, for chamado este metodo,
 	#detectado os inimigos e chamado funcao de 1 script em outro
 	

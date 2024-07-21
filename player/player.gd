@@ -30,7 +30,8 @@ func _process(delta: float) -> void:
 
 	#Processar animacao e rotacao de sprite
 	play_run_idle_animation()
-	rotate_sprite()
+	if not is_attacking:
+		rotate_sprite()
 
 
 #troca animacao do player (depreceated)
@@ -116,7 +117,18 @@ func deal_damage_to_enemies() -> void:
 	for body in bodies:
 		if body.is_in_group("enemies"):
 			var enemy: Enemy = body
-			enemy.damage(sword_damage)
+			
+			var direction_to_enemy = (enemy.position - position).normalized() #vetor normalizado com 1 de movimento
+			var attack_direction: Vector2
+			if sprite.flip_h:
+				attack_direction = Vector2.LEFT
+			else:
+				attack_direction = Vector2.RIGHT
+			var dot_product = direction_to_enemy.dot(attack_direction)
+			if dot_product >= 0.3:
+				enemy.damage(sword_damage)
+			#print("Dot: ", dot_product)
+
 
 #depreceated anterior teste colisao sword
 #	var enemies = get_tree().get_nodes_in_group("enemies")
