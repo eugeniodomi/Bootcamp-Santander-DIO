@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer #filho do animation player
+@onready var sword_area: Area2D = $SwordArea
 
 var input_vector: Vector2 = Vector2(0, 0)
 var is_running: bool = false #checkbox do space, se era sim vira nao, se nao vira sim
@@ -111,14 +112,18 @@ func attack() -> void:
 	#deal_damage_to_enemies()
 
 func deal_damage_to_enemies() -> void:
-	var enemies = get_tree().get_nodes_in_group("enemies")
-	for enemy in enemies:
-		enemy.damage(sword_damage)
+	var bodies = sword_area.get_overlapping_bodies() #pegar corpos dentro das areas, como corpo de um pawn
+	for body in bodies:
+		if body.is_in_group("enemies"):
+			var enemy: Enemy = body
+			enemy.damage(sword_damage)
+
+#depreceated anterior teste colisao sword
+#	var enemies = get_tree().get_nodes_in_group("enemies")
+#	for enemy in enemies:
+#		enemy.damage(sword_damage)
 		
 	#print("Enemies: ", enemies.size())
 	# Acessar todos os inimigos
 	# Chamar a função "damage"
 	# Primeiro parametro com "sword_damage"
-	
-	
-	pass

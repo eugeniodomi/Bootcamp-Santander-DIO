@@ -9,10 +9,4 @@
 position = Vector2(170, 329)
 
 [node name="Pawn6" parent="." instance=ExtResource("2_yic7q")]
-position = Vector2(1052, 326)
-
-[node name="Pawn7" parent="." instance=ExtResource("2_yic7q")]
-position = Vector2(811, 406)
-
-[node name="Pawn6" parent="Pawn7" instance=ExtResource("2_yic7q")]
-position = Vector2(-56, -258)
+position = Vector2(1094, 54)
