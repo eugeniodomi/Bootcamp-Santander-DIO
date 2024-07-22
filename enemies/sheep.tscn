@@ -1,0 +1,81 @@
+[gd_scene load_steps=13 format=3 uid="uid://bqvclai281n3a"]
+
+[ext_resource type="Script" path="res://enemies/enemy.gd" id="1_4ly7s"]
+[ext_resource type="PackedScene" uid="uid://bqbkrqmfqnv7a" path="res://misc/skull.tscn" id="2_4cywi"]
+[ext_resource type="Texture2D" uid="uid://b6sy6f6ps1im" path="res://addons/Tiny Swords/Resources/Sheep/HappySheep_Bouncing.png" id="3_jooyu"]
+[ext_resource type="Script" path="res://enemies/behaviors (comportamentos)/follow_player.gd" id="4_xdlx7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yghv"]
+atlas = ExtResource("3_jooyu")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dspd"]
+atlas = ExtResource("3_jooyu")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbyul"]
+atlas = ExtResource("3_jooyu")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8by4o"]
+atlas = ExtResource("3_jooyu")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eldnx"]
+atlas = ExtResource("3_jooyu")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kaaxp"]
+atlas = ExtResource("3_jooyu")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xtlav"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yghv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dspd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbyul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8by4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eldnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kaaxp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_875jn"]
+radius = 21.0
+height = 44.0
+
+[node name="Sheep" type="CharacterBody2D" groups=["enemies"]]
+position = Vector2(0, -29)
+motion_mode = 1
+script = ExtResource("1_4ly7s")
+health = 1
+death_prefab = ExtResource("2_4cywi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 9)
+sprite_frames = SubResource("SpriteFrames_xtlav")
+autoplay = "default"
+frame_progress = 0.65708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_875jn")
+
+[node name="Follow_Player" type="Node" parent="."]
+script = ExtResource("4_xdlx7")
+speed = 1.8
