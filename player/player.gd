@@ -3,15 +3,22 @@ extends CharacterBody2D
 @export var speed: float = 3
 @export var sword_damage: int = 2
 
+@export var health: int = 100
+@export var death_prefab: PackedScene
+
+
+
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer #filho do animation player
 @onready var sword_area: Area2D = $SwordArea
+@onready var hitbox_area: Area2D = $HitboxArea
 
 var input_vector: Vector2 = Vector2(0, 0)
 var is_running: bool = false #checkbox do space, se era sim vira nao, se nao vira sim
 var was_running: bool = false #checkbox do space, se era sim vira nao, se nao vira sim
 var is_attacking: bool = false
 var attack_cooldown: float = 0.0 #temporizador de reinicio de ataque
+var hitbox_cooldown: float = 0.0 #hitbox temporizador
 
 
 func _process(delta: float) -> void:
@@ -32,6 +39,9 @@ func _process(delta: float) -> void:
 	play_run_idle_animation()
 	if not is_attacking:
 		rotate_sprite()
+	
+	# Processar dano
+	update_hitbox_detection(delta)
 
 
 #troca animacao do player (depreceated)
@@ -113,6 +123,8 @@ func attack() -> void:
 	#deal_damage_to_enemies()
 
 func deal_damage_to_enemies() -> void:
+	#funcao que busca todos inimigos na area, aplica o dano nos mesmos
+	
 	var bodies = sword_area.get_overlapping_bodies() #pegar corpos dentro das areas, como corpo de um pawn
 	for body in bodies:
 		if body.is_in_group("enemies"):
@@ -139,3 +151,57 @@ func deal_damage_to_enemies() -> void:
 	# Acessar todos os inimigos
 	# Chamar a função "damage"
 	# Primeiro parametro com "sword_damage"
+
+#colado de enemy
+
+
+func update_hitbox_detection(delta: float) -> void:
+	#Temporizador
+	hitbox_cooldown -= delta # tira o tempo de cada frame para ir diminuindo
+	if hitbox_cooldown > 0: return
+	
+	#Frequencia (2x por segundo)
+	hitbox_cooldown = 0.5
+	
+	# HitboxArea
+	
+	# Detectar inimigos
+	var bodies = hitbox_area.get_overlapping_bodies()
+	for body in bodies:
+		if body.is_in_group("enemies"):
+			var enemy: Enemy = body
+			var damage_amount = 1 #processando dano recebido ao player
+			damage(damage_amount)
+			
+
+
+
+func damage(amount: int) -> void:
+	if health <= 0: return #caso personagem estiver morto, ta morto kkj
+	
+	
+	# Caso contrario, processa os danos de vida:
+	health -= amount
+	print("Player recebeu dano de ", amount, ". A vida total é de ", health) 
+	#verificar se der espadada, for chamado este metodo,
+	#detectado os inimigos e chamado funcao de 1 script em outro
+	
+	# Piscar inimigo ao receber dano
+	modulate = Color.RED
+	var tween = create_tween()
+	tween.set_ease(tween.EASE_IN) #buscado a curva no site
+	tween.set_trans(Tween.TRANS_QUINT)
+	tween.tween_property(self, "modulate", Color.WHITE, 0.3)
+	
+	# Processar morte
+	if health <= 0:
+		die()
+
+func die() -> void:
+	if death_prefab:
+		var death_object = death_prefab.instantiate()
+		death_object.position = position
+		get_parent().add_child(death_object)
+	
+	print('Player foi de arrasta pra cima!')
+	queue_free()
