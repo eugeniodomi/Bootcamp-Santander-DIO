@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyo1ir22f5qm4"]
+
+[ext_resource type="PackedScene" uid="uid://b78se0ny42bum" path="res://player/player.tscn" id="1_meex2"]
+[ext_resource type="PackedScene" uid="uid://capmuqqm78hle" path="res://misc/meat.tscn" id="2_vyhhv"]
+
+[node name="TestMeet" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_meex2")]
+position = Vector2(425, 322)
+health = 40
+
+[node name="Meat" parent="." instance=ExtResource("2_vyhhv")]
+position = Vector2(957, 294)
+
+[node name="Meat2" parent="." instance=ExtResource("2_vyhhv")]
+position = Vector2(933, 468)
