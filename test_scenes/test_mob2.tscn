@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5lb6ifmfg5u5"]
+
+[ext_resource type="PackedScene" uid="uid://beyqdavsxi25u" path="res://systems/mob_spawner.tscn" id="1_xbt65"]
+[ext_resource type="PackedScene" uid="uid://b78se0ny42bum" path="res://player/player.tscn" id="2_afhba"]
+
+[node name="TestMob2" type="Node2D"]
+
+[node name="MobSpawner" parent="." instance=ExtResource("1_xbt65")]
+mobs_per_minute = 600.0
+
+[node name="Player" parent="." instance=ExtResource("2_afhba")]
+position = Vector2(372, 360)
