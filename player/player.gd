@@ -1,10 +1,22 @@
 class_name Player
 extends CharacterBody2D
 
+
+@export_category("Movement") #categorias dentro do player
 @export var speed: float = 3
+@export_category("Sword")
 @export var sword_damage: int = 2
+@export_category("Ritual")
+@export var ritual_damage: int = 1
+@export var ritual_interval: float = 30
+@export var ritual_scene: PackedScene
+#Dano do ritual
+#Intervalo
+#Cena
 
 
+
+@export_category("Life")
 @export var health: int = 100
 @export var max_health: int = 100
 @export var death_prefab: PackedScene
@@ -22,7 +34,7 @@ var was_running: bool = false #checkbox do space, se era sim vira nao, se nao vi
 var is_attacking: bool = false
 var attack_cooldown: float = 0.0 #temporizador de reinicio de ataque
 var hitbox_cooldown: float = 0.0 #hitbox temporizador
-
+var ritual_cooldown: float = 0.0
 
 func _process(delta: float) -> void:
 	#leitura de onde esta o player
@@ -46,6 +58,9 @@ func _process(delta: float) -> void:
 	# Processar dano
 	update_hitbox_detection(delta)
 
+	# Ritual
+	update_ritual(delta)
+	
 
 #troca animacao do player (depreceated)
 #func _process(delta: float) -> void:
@@ -73,6 +88,24 @@ func update_attack_cooldown(delta: float) -> void:
 			is_attacking = false
 			is_running = false
 			animation_player.play('idle')
+
+func update_ritual(delta: float) -> void:
+	#Atualizar temporizador
+	ritual_cooldown -= delta
+	if ritual_cooldown > 0: return
+	#Resetar temporizador
+	ritual_cooldown = ritual_interval
+	
+	#Criar ritual
+	var ritual = ritual_scene.instantiate()
+	#setar ritualdamage com damageamount 
+	ritual.damage_amount = ritual_damage
+	add_child(ritual) #ritual se mexe junto com player
+
+	
+	
+	
+	pass
 
 func read_input() -> void:
 	

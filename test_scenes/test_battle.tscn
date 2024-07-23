@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8qm8u87vwi1l"]
+[gd_scene load_steps=5 format=3 uid="uid://c8qm8u87vwi1l"]
 
 [ext_resource type="PackedScene" uid="uid://b78se0ny42bum" path="res://player/player.tscn" id="1_ky4x7"]
 [ext_resource type="PackedScene" uid="uid://csd302cyr1w2j" path="res://enemies/pawn.tscn" id="2_yic7q"]
 [ext_resource type="PackedScene" uid="uid://bqvclai281n3a" path="res://enemies/sheep.tscn" id="3_ophbi"]
 [ext_resource type="PackedScene" uid="uid://r6yquxmwbrq5" path="res://enemies/goblin.tscn" id="4_un4p5"]
-[ext_resource type="PackedScene" uid="uid://det5t24qtk5ux" path="res://misc/ritual.tscn" id="5_0qoy5"]
 
 [node name="TesteBattle" type="Node2D"]
 
@@ -28,6 +27,3 @@ position = Vector2(919, 118)
 
 [node name="Goblin2" parent="." instance=ExtResource("4_un4p5")]
 position = Vector2(868, 547)
-
-[node name="Ritual" parent="." instance=ExtResource("5_0qoy5")]
-position = Vector2(165, 308)
