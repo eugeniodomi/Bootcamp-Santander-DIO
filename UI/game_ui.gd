@@ -4,7 +4,11 @@ extends CanvasLayer
 @onready var meat_label: Label = %MeatLabel
 
 var time_elapsed: float = 0.0
+var meat_counter: int = 0
 
+func _ready():
+	GameManager.player.meat_collected.connect(on_meat_collected)
+	meat_label.text = str(meat_counter)
 
 func _process(delta: float): #timer
 	time_elapsed += delta
@@ -13,4 +17,7 @@ func _process(delta: float): #timer
 	var minutes: int = time_elapsed_in_seconds / 60
 	
 	timer_label.text = "%02d:%02d" % [minutes, seconds]
-	
+
+func on_meat_collected(regeneration_value:int) -> void:
+	meat_counter += 1
+	meat_label.text = str(meat_counter)

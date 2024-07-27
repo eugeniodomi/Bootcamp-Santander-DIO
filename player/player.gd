@@ -37,6 +37,11 @@ var attack_cooldown: float = 0.0 #temporizador de reinicio de ataque
 var hitbox_cooldown: float = 0.0 #hitbox temporizador
 var ritual_cooldown: float = 0.0
 
+signal meat_collected(value:int) #criando sinal
+
+func _ready():
+	GameManager.player = self #usando gamemaneger como interpolador
+
 func _process(delta: float) -> void:
 	#leitura de onde esta o player
 	GameManager.player_position = position
