@@ -56,8 +56,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_875jn"]
-radius = 34.0
-height = 68.0
+radius = 15.0
+height = 32.735
 
 [node name="Pawn" type="CharacterBody2D" groups=["enemies"]]
 motion_mode = 1
@@ -72,7 +72,8 @@ autoplay = "default"
 frame_progress = 0.0359043
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5)
+position = Vector2(0, 17)
+scale = Vector2(1, 0.794257)
 shape = SubResource("CapsuleShape2D_875jn")
 
 [node name="Follow_Player" type="Node" parent="."]
