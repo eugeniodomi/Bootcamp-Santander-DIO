@@ -14,12 +14,23 @@ func _process(delta: float):
 	# Frequencia: Monstros por minuto
 	var interval = 60.0 / mobs_per_minute
 	cooldown = interval
-	
+
+	# Checar se o ponto é válido
+	var point = get_point()
+	var world_state = get_world_2d().direct_space_state #pegar o mundo 2d do game, acessando o estado do mundo (sabe se tem colisoes de obj)
+	var parameters = PhysicsPointQueryParameters2D.new()
+	parameters.position = point
+	parameters.collision_mask = 0b1000 #ulitzando bits para testar colisao
+	var result: Array = world_state.intersect_point(parameters, 1) #array, perguntando colisoes
+	if not result.is_empty(): return
+	# Perguntar pro jo se esse ponto tem colisão
+
+
 	# Instanciar uma criatura aleatória
 	var index = randi_range(0, creatures.size() - 1)
 	var creature_scene = creatures[index]
 	var creature = creature_scene.instantiate()
-	creature.global_position = get_point()
+	creature.global_position = point #ponto aleatorio para spawn
 	get_parent().add_child(creature)
 
 func get_point() -> Vector2: #criar mo0nstro aleatorio
