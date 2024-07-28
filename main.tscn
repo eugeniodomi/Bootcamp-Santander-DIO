@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://drnox7jy4racr"]
+[gd_scene load_steps=38 format=3 uid="uid://drnox7jy4racr"]
 
 [ext_resource type="PackedScene" uid="uid://b78se0ny42bum" path="res://player/player.tscn" id="1_oyw8k"]
 [ext_resource type="PackedScene" uid="uid://beyqdavsxi25u" path="res://systems/mob_spawner.tscn" id="2_04cbx"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://eavpr5ju747x" path="res://addons/Tiny Swords/Deco/06.png" id="14_i3tkf"]
 [ext_resource type="Texture2D" uid="uid://cl8futaamwwtn" path="res://addons/Tiny Swords/Deco/07.png" id="15_gnii4"]
 [ext_resource type="Texture2D" uid="uid://bpt8hudlh0doq" path="res://addons/Tiny Swords/Deco/08.png" id="16_ok7ep"]
+[ext_resource type="Script" path="res://systems/difficulty_system.gd" id="16_oxij1"]
 [ext_resource type="PackedScene" uid="uid://ct834sle3hvb0" path="res://misc/tree.tscn" id="18_jka28"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gdgi6"]
@@ -205,6 +206,10 @@ update_scale = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(570, 328)
+
+[node name="DifficultySystem" type="Node" parent="." node_paths=PackedStringArray("mob_spawner")]
+script = ExtResource("16_oxij1")
+mob_spawner = NodePath("../MobSpawner")
 
 [node name="MobSpawner" parent="." instance=ExtResource("2_04cbx")]
 position = Vector2(570, 328)

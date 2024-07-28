@@ -1,3 +1,4 @@
+class_name MobSpawner
 extends Node2D
 
 @export var creatures: Array[PackedScene]
@@ -5,6 +6,7 @@ extends Node2D
 
 @onready var path_follow_2d: PathFollow2D = %PathFollow2D
 var cooldown: float = 0.0
+
 
 func _process(delta: float):
 		# Temporizador (cooldown)
