@@ -210,6 +210,9 @@ position = Vector2(570, 328)
 [node name="DifficultySystem" type="Node" parent="." node_paths=PackedStringArray("mob_spawner")]
 script = ExtResource("16_oxij1")
 mob_spawner = NodePath("../MobSpawner")
+initial_spawn_rate = 30.0
+spawn_rate_per_minute = 60.0
+break_intensity = 0.33
 
 [node name="MobSpawner" parent="." instance=ExtResource("2_04cbx")]
 position = Vector2(570, 328)
