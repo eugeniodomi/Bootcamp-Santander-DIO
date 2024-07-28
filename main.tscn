@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://drnox7jy4racr"]
+[gd_scene load_steps=39 format=3 uid="uid://drnox7jy4racr"]
 
 [ext_resource type="PackedScene" uid="uid://b78se0ny42bum" path="res://player/player.tscn" id="1_oyw8k"]
 [ext_resource type="PackedScene" uid="uid://beyqdavsxi25u" path="res://systems/mob_spawner.tscn" id="2_04cbx"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bpt8hudlh0doq" path="res://addons/Tiny Swords/Deco/08.png" id="16_ok7ep"]
 [ext_resource type="Script" path="res://systems/difficulty_system.gd" id="16_oxij1"]
 [ext_resource type="PackedScene" uid="uid://ct834sle3hvb0" path="res://misc/tree.tscn" id="18_jka28"]
+[ext_resource type="PackedScene" uid="uid://d16c7q5psyrxy" path="res://UI/game_over_ui.tscn" id="20_ceoda"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gdgi6"]
 texture = ExtResource("5_n2n1u")
@@ -365,3 +366,5 @@ position = Vector2(-35, 607)
 position = Vector2(106, 496)
 
 [node name="GameUI" parent="." instance=ExtResource("3_a6cr6")]
+
+[node name="GameOverUI" parent="." instance=ExtResource("20_ceoda")]
