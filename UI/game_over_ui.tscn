@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://d16c7q5psyrxy"]
+[gd_scene load_steps=13 format=3 uid="uid://d16c7q5psyrxy"]
 
+[ext_resource type="Script" path="res://UI/game_over_ui.gd" id="1_2287t"]
 [ext_resource type="Texture2D" uid="uid://np3feoxxm211" path="res://addons/Tiny Swords/UI/Ribbons/Ribbon_Red_3Slides.png" id="1_mmmdk"]
 [ext_resource type="Texture2D" uid="uid://b1ls1yhn3jvgc" path="res://addons/Tiny Swords/UI/Banners/Banner_Horizontal.png" id="2_c04j3"]
 
@@ -13,6 +14,7 @@ axis_stretch_horizontal = 2
 font_names = PackedStringArray("Segoe UI")
 font_weight = 675
 font_stretch = 175
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_rinxu"]
 font = SubResource("SystemFont_clqyc")
@@ -36,11 +38,51 @@ region_rect = Rect2(32, 48, 128, 128)
 [sub_resource type="SystemFont" id="SystemFont_i0ayn"]
 font_names = PackedStringArray("Tahoma")
 font_weight = 999
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_6ad2r"]
 font = SubResource("SystemFont_i0ayn")
 font_size = 27
 font_color = Color(0, 0, 0, 0.843137)
+
+[sub_resource type="Animation" id="Animation_fbxnj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.686275)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TopPanel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(374, 28)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BottomPanel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(309, 461)]
+}
 
 [sub_resource type="Animation" id="Animation_ogpsp"]
 resource_name = "default"
@@ -82,45 +124,6 @@ tracks/2/keys = {
 "values": [Vector2(302, 670), Vector2(309, 461)]
 }
 
-[sub_resource type="Animation" id="Animation_fbxnj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Background:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0.686275)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TopPanel:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(374, 28)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("BottomPanel:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(309, 461)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wthgt"]
 _data = {
 "RESET": SubResource("Animation_fbxnj"),
@@ -128,6 +131,7 @@ _data = {
 }
 
 [node name="GameOverUI" type="CanvasLayer"]
+script = ExtResource("1_2287t")
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -135,16 +139,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.87451)
+color = Color(0, 0, 0, 0.686275)
 
 [node name="TopPanel" type="Panel" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -205.0
-offset_top = 59.0
-offset_right = 203.006
-offset_bottom = 165.0
+offset_left = 374.0
+offset_top = 28.0
+offset_right = 782.007
+offset_bottom = 134.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_0amu2")
 
@@ -170,10 +174,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -267.0
-offset_top = -187.0
-offset_right = 271.0
-offset_bottom = -29.0002
+offset_left = 309.0
+offset_top = 461.0
+offset_right = 847.0
+offset_bottom = 619.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_s1ca7")

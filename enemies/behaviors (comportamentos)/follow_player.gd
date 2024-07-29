@@ -16,6 +16,9 @@ func _ready():
 #comportamento do objeto: seguir o personagem player
 
 func _physics_process(delta: float) -> void:
+		# Ignorar GameOver
+	if GameManager.is_game_over: return
+	
 	#var player_position = Vector2(0, 0) / depreceated
 	
 	# Calcula a direcao 

@@ -9,6 +9,9 @@ var cooldown: float = 0.0
 
 
 func _process(delta: float):
+		# Ignorar GameOver
+	if GameManager.is_game_over: return
+	
 		# Temporizador (cooldown)
 	cooldown -= delta
 	if cooldown > 0: return

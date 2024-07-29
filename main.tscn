@@ -1,5 +1,6 @@
-[gd_scene load_steps=39 format=3 uid="uid://drnox7jy4racr"]
+[gd_scene load_steps=40 format=3 uid="uid://drnox7jy4racr"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_imbn7"]
 [ext_resource type="PackedScene" uid="uid://b78se0ny42bum" path="res://player/player.tscn" id="1_oyw8k"]
 [ext_resource type="PackedScene" uid="uid://beyqdavsxi25u" path="res://systems/mob_spawner.tscn" id="2_04cbx"]
 [ext_resource type="PackedScene" uid="uid://bjs7e8q57sbfp" path="res://UI/game_ui.tscn" id="3_a6cr6"]
@@ -147,8 +148,11 @@ size = Vector2(5006, 1487.88)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tcgfq"]
 size = Vector2(5006, 895.75)
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("game_ui")]
 y_sort_enabled = true
+script = ExtResource("1_imbn7")
+game_ui = NodePath("GameUI")
+game_over_ui_template = ExtResource("20_ceoda")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -366,5 +370,3 @@ position = Vector2(-35, 607)
 position = Vector2(106, 496)
 
 [node name="GameUI" parent="." instance=ExtResource("3_a6cr6")]
-
-[node name="GameOverUI" parent="." instance=ExtResource("20_ceoda")]

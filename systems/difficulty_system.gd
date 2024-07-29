@@ -10,6 +10,10 @@ var time: float = 0.0
 
 
 func _process(delta: float) -> void:
+	# Ignorar GameOver
+	if GameManager.is_game_over: return
+	
+	# Incrementar temporizador
 	time += delta
 	
 	#Dificuldade linear (linha verde)
