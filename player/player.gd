@@ -41,6 +41,7 @@ signal meat_collected(value:int) #criando sinal
 
 func _ready():
 	GameManager.player = self #usando gamemaneger como interpolador
+	meat_collected.connect(func(value: int): GameManager.meat_counter += 1)
 
 func _process(delta: float) -> void:
 	#leitura de onde esta o player

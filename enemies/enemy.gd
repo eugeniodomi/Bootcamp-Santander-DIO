@@ -43,17 +43,19 @@ func damage(amount: int) -> void:
 	if health <= 0:
 		die()
 
-func die() -> void:
+func die() -> void:#caveira
 	if death_prefab:
 		var death_object = death_prefab.instantiate()
 		death_object.position = position
 		get_parent().add_child(death_object)
 	
-	queue_free()
 	
 	#Drop
 	if randf() <= drop_chance:
 		drop_item()
+	
+	# Incrementar contador
+	GameManager.monsters_defeated_counter += 1
 	
 	# Deletar node
 	queue_free()
@@ -64,7 +66,7 @@ func drop_item() -> void:
 	get_parent().add_child(drop)
 
 func get_random_drop_item() -> PackedScene:
-	# Listas com 1 item
+	# Listas com 1 item 
 	if drop_items.size() == 1:
 		return drop_items[0]
 
